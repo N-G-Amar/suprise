@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>A Magical Diwali Surprise for Aashiqua ❤️ | Happy Diwali</title>
+  
+  <!-- Meta tags for social sharing & elegance -->
+  <meta name="description" content="A dreamy, romantic, and magical Diwali surprise crafted with love for Aashiqua." />
+  <meta name="theme-color" content="#12072b" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>" />
+
+  <!-- Google Fonts: Great Vibes (Calligraphy), Cinzel Decorative (Royal Festive), Poppins & Montserrat (Clean Elegance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient Night Canvas Layers -->
+  <canvas id="ambient-canvas" class="background-canvas"></canvas>
+  <canvas id="fireworks-canvas" class="background-canvas"></canvas>
+
+  <!-- Hanging Festive Fairy String Lights at Top -->
+  <div class="fairy-lights-container" aria-hidden="true">
+    <div class="light-wire"></div>
+    <div class="lights-row" id="lights-row"></div>
+  </div>
+
+  <!-- Ornate Golden Corner Rangoli Decorations -->
+  <div class="corner-rangoli top-left" aria-hidden="true">
+    <svg viewBox="0 0 120 120" class="rangoli-svg">
+      <path d="M0,0 Q60,10 80,40 Q100,70 120,120 Q70,100 40,80 Q10,60 0,0 Z" fill="url(#goldGradient)" opacity="0.35"/>
+      <circle cx="20" cy="20" r="10" fill="none" stroke="url(#goldGradient)" stroke-width="1.5"/>
+      <circle cx="45" cy="45" r="15" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <circle cx="20" cy="20" r="4" fill="#ffd700"/>
+    </svg>
+  </div>
+  <div class="corner-rangoli top-right" aria-hidden="true">
+    <svg viewBox="0 0 120 120" class="rangoli-svg">
+      <path d="M120,0 Q60,10 40,40 Q20,70 0,120 Q50,100 80,80 Q110,60 120,0 Z" fill="url(#goldGradient)" opacity="0.35"/>
+      <circle cx="100" cy="20" r="10" fill="none" stroke="url(#goldGradient)" stroke-width="1.5"/>
+      <circle cx="75" cy="45" r="15" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <circle cx="100" cy="20" r="4" fill="#ffd700"/>
+    </svg>
+  </div>
+
+  <!-- Reusable SVG Gradients and Filters -->
+  <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+    <defs>
+      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffe28a" />
+        <stop offset="50%" stop-color="#d4af37" />
+        <stop offset="100%" stop-color="#aa771c" />
+      </linearGradient>
+      <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffd5e5" />
+        <stop offset="50%" stop-color="#ff758c" />
+        <stop offset="100%" stop-color="#c33764" />
+      </linearGradient>
+      <radialGradient id="flameGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fff8db" />
+        <stop offset="35%" stop-color="#ffae19" />
+        <stop offset="70%" stop-color="#ff4500" />
+        <stop offset="100%" stop-color="transparent" />
+      </radialGradient>
+      <radialGradient id="diyaBodyGrad" cx="30%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#e28c46" />
+        <stop offset="50%" stop-color="#a04000" />
+        <stop offset="100%" stop-color="#5a1d00" />
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <!-- Top Utilities Bar: Copy Prompt + Music Controller -->
+  <header class="top-nav-bar">
+    <div class="nav-left">
+      <button id="music-btn" class="nav-btn music-btn" aria-label="Toggle festive background music" title="Toggle Music">
+        <span class="music-icon-wrap">
+          <svg class="music-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+          <span class="sound-waves" id="sound-waves">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </span>
+        </span>
+        <span class="btn-text" id="music-btn-text">Festive Music</span>
+      </button>
+    </div>
+
+    <div class="nav-right">
+      <button id="copy-prompt-btn" class="nav-btn copy-prompt-btn" aria-label="Copy website prompt">
+        <span class="btn-icon">📋</span>
+        <span class="btn-label" id="copy-btn-text">Copy Website Prompt ✨</span>
+        <span class="sparkle-orbit" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Copy Toast Notification Popup -->
+  <div id="copy-toast" class="copy-toast" role="alert" aria-live="polite">
+    <span class="toast-icon">✨</span>
+    <span class="toast-msg">✨ Prompt copied successfully! ❤️</span>
+  </div>
+
+  <!-- MAIN EXPERIENCE CONTAINER -->
+  <main class="main-wrapper" id="main-wrapper">
+    
+    <!-- ============================================== -->
+    <!-- SECTION 1: LANDING WELCOME SCREEN              -->
+    <!-- ============================================== -->
+    <section id="welcome-screen" class="screen-view active-screen">
+      <div class="welcome-card glass-panel">
+        <div class="diya-header-wrapper">
+          <!-- Realistic Glowing SVG Diya -->
+          <div class="diya-fixture landing-diya">
+            <div class="diya-light-halo"></div>
+            <div class="flame-container">
+              <div class="flame-outer"></div>
+              <div class="flame-core"></div>
+              <div class="flame-blue"></div>
+            </div>
+            <svg class="diya-base-svg" viewBox="0 0 100 45">
+              <path d="M 5,12 C 25,42 75,42 95,12 C 85,25 65,30 50,30 C 35,30 15,25 5,12 Z" fill="url(#diyaBodyGrad)" stroke="#ffd700" stroke-width="1.5" />
+              <ellipse cx="50" cy="12" rx="45" ry="7" fill="#b85514" stroke="#ffd700" stroke-width="1" />
+              <circle cx="50" cy="12" r="3" fill="#ffe28a" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="glowing-border-ornament"></div>
+
+        <h1 class="welcome-heading">
+          Hey <span class="romantic-highlight shimmer-text">Aashiqua</span>... <span class="heart-pulse">❤️</span>
+        </h1>
+        
+        <p class="welcome-subtext">
+          Someone has a little Diwali surprise for you...
+        </p>
+
+        <div class="welcome-action-wrap">
+          <button id="open-surprise-btn" class="cta-golden-btn pulse-glow">
+            <span class="btn-shimmer"></span>
+            <span class="btn-content">
+              Open Your Surprise <span class="magic-stars">✨</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="floating-petals-hint">
+          <span class="mini-sparkle">✨</span>
+          <span>Crafted with endless love & festive joy</span>
+          <span class="mini-sparkle">✨</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 2: 3D INTERACTIVE GREETING CARD SCREEN -->
+    <!-- ============================================== -->
+    <section id="card-screen" class="screen-view hidden-screen">
+      <div class="card-stage-container">
+        <div class="card-stage-hint-wrap">
+          <p class="card-instruction" id="card-instruction">
+            <span class="glow-symbol">🪄</span> Double-click or double-tap the card to open <span class="glow-symbol">✨</span>
+          </p>
+        </div>
+
+        <!-- 3D Perspective Card Container -->
+        <div class="card-3d-scene" id="card-scene">
+          <div class="greeting-card-3d" id="greeting-card">
+            
+            <!-- CARD COVER (FLIPS OPEN) -->
+            <div class="card-cover" id="card-cover">
+              <!-- FRONT OF THE COVER -->
+              <div class="card-face card-cover-front">
+                <div class="card-inner-border">
+                  <div class="ornate-corner tl"></div>
+                  <div class="ornate-corner tr"></div>
+                  <div class="ornate-corner bl"></div>
+                  <div class="ornate-corner br"></div>
+
+                  <!-- Golden Mandala / Rangoli Backdrop -->
+                  <div class="mandala-ring">
+                    <svg viewBox="0 0 200 200" class="mandala-svg">
+                      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255, 215, 0, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" />
+                      <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255, 215, 0, 0.4)" stroke-width="1" />
+                      <g transform="translate(100,100)">
+                        <!-- 8 Petals Ornate Pattern -->
+                        <path d="M 0,-85 C 18,-60 18,-30 0,-15 C -18,-30 -18,-60 0,-85" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" />
+                        <path d="M 0,85 C 18,60 18,30 0,15 C -18,30 -18,60 0,85" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" />
+                        <path d="M -85,0 C -60,18 -30,18 -15,0 C -30,-18 -60,-18 -85,0" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" />
+                        <path d="M 85,0 C 60,18 30,18 15,0 C 30,-18 60,-18 85,0" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" />
+                        <circle cx="0" cy="0" r="28" fill="rgba(255, 105, 180, 0.15)" stroke="url(#goldGradient)" stroke-width="1.5"/>
+                      </g>
+                    </svg>
+                  </div>
+
+                  <!-- Glowing Center Diya on Card -->
+                  <div class="card-diya-center">
+                    <div class="diya-fixture medium-diya">
+                      <div class="diya-light-halo"></div>
+                      <div class="flame-container">
+                        <div class="flame-outer"></div>
+                        <div class="flame-core"></div>
+                        <div class="flame-blue"></div>
+                      </div>
+                      <svg class="diya-base-svg" viewBox="0 0 100 45">
+                        <path d="M 5,12 C 25,42 75,42 95,12 C 85,25 65,30 50,30 C 35,30 15,25 5,12 Z" fill="url(#diyaBodyGrad)" stroke="#ffd700" stroke-width="2" />
+                        <ellipse cx="50" cy="12" rx="45" ry="7" fill="#b85514" stroke="#ffd700" stroke-width="1.2" />
+                        <circle cx="50" cy="12" r="3.5" fill="#ffe28a" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Front Title & Tagline -->
+                  <div class="card-front-content">
+                    <p class="card-festive-label">HAPPY DIWALI</p>
+                    <h2 class="card-cover-title">A little surprise for you 💌</h2>
+                    <p class="card-recipient-teaser">For My Favorite Person</p>
+                    <div class="interaction-pill">
+                      <span class="tap-icon">👆</span>
+                      <span class="tap-text">Double-Tap to Open</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BACK OF THE COVER (INSIDE LEFT) -->
+              <div class="card-face card-cover-back">
+                <div class="inside-decor-pattern">
+                  <div class="inside-quote-frame">
+                    <span class="ornate-star">✨</span>
+                    <p class="inside-quote">
+                      "Like the soft glow of a diya on the darkest night, your presence brings warmth, joy, and light to everything around you."
+                    </p>
+                    <div class="cute-heart-row">
+                      <span>✨</span>
+                      <span>❤️</span>
+                      <span>✨</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD BASE / INSIDE RIGHT (REVEALED WHEN COVER FLIPS) -->
+            <div class="card-base-inside">
+              <div class="base-content-inner">
+                <div class="mini-rangoli-center">
+                  <span class="sparkle-star">🪔</span>
+                </div>
+                <h3 class="revealing-soon-title">Opening The Magic...</h3>
+                <p class="revealing-soon-desc">Hold onto your heart ✨</p>
+                <div class="gold-progress-bar">
+                  <div class="gold-progress-fill"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Quick fallback button for single click / tap clarity -->
+        <div class="tap-fallback-action">
+          <button id="direct-open-trigger-btn" class="gentle-link-btn">
+            ✨ Tap here if you prefer a single click to open ✨
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 3: THE BIG SURPRISE REVEAL SCREEN       -->
+    <!-- ============================================== -->
+    <section id="reveal-screen" class="screen-view hidden-screen">
+      <div class="reveal-content-container">
+        
+        <!-- Festive Top Emblem -->
+        <div class="festive-banner-tag reveal-step" data-step="1">
+          <div class="diyas-trio">
+            <span class="floating-diya-emoji left-diya">🪔</span>
+            <span class="grand-diwali-title shimmer-text">HAPPY DIWALI</span>
+            <span class="floating-diya-emoji right-diya">🪔</span>
+          </div>
+        </div>
+
+        <!-- THE MAIN HIGHLIGHT: AASHIQUA'S NAME -->
+        <div class="aashiqua-hero-block reveal-step" data-step="2">
+          <div class="name-halo-glow"></div>
+          <h1 class="aashiqua-name">
+            AASHIQUA <span class="beating-heart">❤️</span>
+          </h1>
+          <div class="golden-underline-flourish">
+            <svg viewBox="0 0 300 24" class="flourish-svg">
+              <path d="M10,12 Q75,2 150,12 Q225,22 290,12" stroke="url(#goldGradient)" stroke-width="2" fill="none" />
+              <circle cx="150" cy="12" r="5" fill="#ffd700" />
+              <polygon points="150,4 153,12 150,20 147,12" fill="#fff" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- HEARTFELT MESSAGE CARD (ROTATING 10 DIWALI WISHES) -->
+        <div class="heartfelt-message-box glass-card reveal-step" data-step="3">
+          <div class="quote-header-bar">
+            <span class="quote-badge" id="quote-badge">💌 Wish 1 of 10</span>
+            <button id="next-wish-btn" class="mini-quote-switch-btn" title="View Next Wish" aria-label="Next Wish">
+              <span>Next Wish 🪄</span>
+            </button>
+          </div>
+
+          <div class="quote-mark open-quote">“</div>
+          
+          <div class="quote-text-container" id="quote-text-container">
+            <p class="emotional-message line-1" id="quote-line-1">
+              May this Diwali fill your life with endless happiness, beautiful memories, countless reasons to smile and all the love your heart deserves.
+            </p>
+            
+            <p class="emotional-message line-2" id="quote-line-2">
+              May your world always shine brighter than a thousand diyas. Keep smiling and keep glowing, because you deserve all the beautiful things in this world. ✨❤️
+            </p>
+
+            <p class="magical-closing-line line-3" id="quote-closing">
+              Wishing you the happiest and most magical Diwali ever! 💗
+            </p>
+          </div>
+
+          <div class="quote-mark close-quote">”</div>
+        </div>
+
+        <!-- INTERACTIVE DIYAS ROW AT BOTTOM -->
+        <div class="diya-altar-row reveal-step" data-step="4">
+          <div class="altar-diya interactive-diya" data-label="Joy">
+            <div class="diya-fixture small-diya">
+              <div class="diya-light-halo"></div>
+              <div class="flame-container">
+                <div class="flame-outer"></div>
+                <div class="flame-core"></div>
+              </div>
+              <svg class="diya-base-svg" viewBox="0 0 100 45">
+                <path d="M 5,12 C 25,42 75,42 95,12 C 85,25 65,30 50,30 C 35,30 15,25 5,12 Z" fill="url(#diyaBodyGrad)" stroke="#ffd700" stroke-width="2" />
+                <ellipse cx="50" cy="12" rx="45" ry="7" fill="#b85514" />
+              </svg>
+            </div>
+            <span class="diya-blessing">Joy ✨</span>
+          </div>
+
+          <div class="altar-diya interactive-diya center-altar" data-label="Love">
+            <div class="diya-fixture medium-diya">
+              <div class="diya-light-halo"></div>
+              <div class="flame-container">
+                <div class="flame-outer"></div>
+                <div class="flame-core"></div>
+              </div>
+              <svg class="diya-base-svg" viewBox="0 0 100 45">
+                <path d="M 5,12 C 25,42 75,42 95,12 C 85,25 65,30 50,30 C 35,30 15,25 5,12 Z" fill="url(#diyaBodyGrad)" stroke="#ffd700" stroke-width="2" />
+                <ellipse cx="50" cy="12" rx="45" ry="7" fill="#b85514" />
+              </svg>
+            </div>
+            <span class="diya-blessing highlight-blessing">Eternal Love ❤️</span>
+          </div>
+
+          <div class="altar-diya interactive-diya" data-label="Prosperity">
+            <div class="diya-fixture small-diya">
+              <div class="diya-light-halo"></div>
+              <div class="flame-container">
+                <div class="flame-outer"></div>
+                <div class="flame-core"></div>
+              </div>
+              <svg class="diya-base-svg" viewBox="0 0 100 45">
+                <path d="M 5,12 C 25,42 75,42 95,12 C 85,25 65,30 50,30 C 35,30 15,25 5,12 Z" fill="url(#diyaBodyGrad)" stroke="#ffd700" stroke-width="2" />
+                <ellipse cx="50" cy="12" rx="45" ry="7" fill="#b85514" />
+              </svg>
+            </div>
+            <span class="diya-blessing">Success 🌟</span>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE ACTIONS: CELEBRATE FIREWORKS & REPLAY -->
+        <div class="reveal-actions-row reveal-step" data-step="5">
+          <button id="spark-fireworks-btn" class="secondary-magic-btn">
+            <span>🎆 Launch Fireworks</span>
+          </button>
+          <button id="replay-experience-btn" class="secondary-magic-btn">
+            <span>↺ Relive The Magic</span>
+          </button>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- SECTION 7: FINAL SCREEN FOOTER                 -->
+        <!-- ============================================== -->
+        <footer class="final-emotional-footer reveal-step" data-step="6">
+          <div class="glowing-heart-pod">
+            <div class="heart-pulse-glow"></div>
+            <span class="footer-heart-symbol">❤️</span>
+          </div>
+          <p class="final-love-text">
+            Made with a little extra love, just for you. ❤️
+          </p>
+          <p class="final-sub-blessing">
+            Happy Diwali, Aashiqua! ✨
+          </p>
+        </footer>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Sparkle & Heart Trail Element Container -->
+  <div id="trail-container" class="trail-container" aria-hidden="true"></div>
+
+  <!-- JavaScript Application Bundle -->
+  <script src="script.js"></script>
+</body>
+</html>
