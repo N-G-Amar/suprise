@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>A Magical Diwali Surprise for Aashiqua ❤️ | Happy Diwali</title>
   
-  <!-- Meta tags for social sharing & elegance -->
+  <!-- Meta tags for social sharing, privacy & elegance -->
   <meta name="description" content="A dreamy, romantic, and magical Diwali surprise crafted with love for Aashiqua." />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
   <meta name="theme-color" content="#12072b" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>" />
 
@@ -106,6 +107,28 @@
   <div id="copy-toast" class="copy-toast" role="alert" aria-live="polite">
     <span class="toast-icon">✨</span>
     <span class="toast-msg">✨ Prompt copied successfully! ❤️</span>
+  </div>
+
+  <!-- Secret Link Access Gate (Only people with the link or secret key can access) -->
+  <div id="secret-lock-overlay" class="secret-lock-overlay">
+    <div class="secret-lock-box glass-panel">
+      <div class="lock-icon-wrap">
+        <span class="lock-emoji">🔐</span>
+      </div>
+      <h2 class="lock-title">A Private Diwali Surprise ✨</h2>
+      <p class="lock-subtitle">
+        This magical corner of the internet is crafted for someone special. Enter the secret word or open with your private link.
+      </p>
+      
+      <form id="secret-lock-form" class="lock-form" onsubmit="return false;">
+        <div class="lock-input-wrap">
+          <input type="text" id="secret-key-input" class="secret-input" placeholder="Enter secret word..." autocomplete="off" />
+          <button type="submit" id="unlock-btn" class="unlock-btn">Unlock 🪄</button>
+        </div>
+        <p class="lock-hint">Hint: <span class="hint-word">surprise</span> or <span class="hint-word">aashiqua</span> 💌</p>
+        <p id="lock-error-msg" class="lock-error-msg"></p>
+      </form>
+    </div>
   </div>
 
   <!-- MAIN EXPERIENCE CONTAINER -->

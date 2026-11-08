@@ -247,6 +247,68 @@ Build the complete working website, not just a design mockup. Implement all butt
   const fireworksCtx = fireworksCanvas.getContext('2d');
   const trailContainer = document.getElementById('trail-container');
 
+  // Secret Link Privacy Elements
+  const secretLockOverlay = document.getElementById('secret-lock-overlay');
+  const secretKeyInput = document.getElementById('secret-key-input');
+  const secretLockForm = document.getElementById('secret-lock-form');
+  const lockErrorMsg = document.getElementById('lock-error-msg');
+  const unlockBtn = document.getElementById('unlock-btn');
+
+  // Check if opened via secret link or already unlocked
+  function checkSecretAccess() {
+    if (!secretLockOverlay) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const hash = window.location.hash.toLowerCase();
+    const keyParam = (urlParams.get('key') || urlParams.get('surprise') || urlParams.get('to') || '').toLowerCase();
+    const hasSearchKeyword = window.location.search.toLowerCase().includes('surprise') || window.location.search.toLowerCase().includes('aashiqua');
+    const isSessionUnlocked = sessionStorage.getItem('diwali_surprise_unlocked') === 'true';
+
+    // Auto-unlock if link has ?key=surprise, ?surprise, #surprise, etc. or session is unlocked
+    if (
+      keyParam === 'surprise' ||
+      keyParam === 'aashiqua' ||
+      hasSearchKeyword ||
+      hash.includes('surprise') ||
+      hash.includes('aashiqua') ||
+      isSessionUnlocked
+    ) {
+      unlockWebsite(false);
+    }
+  }
+
+  function unlockWebsite(withAnimation = true) {
+    if (!secretLockOverlay) return;
+    sessionStorage.setItem('diwali_surprise_unlocked', 'true');
+    secretLockOverlay.classList.add('unlocked');
+
+    if (withAnimation) {
+      launchMiniFireworks(width / 2, height * 0.4, 2);
+    }
+  }
+
+  if (secretLockForm) {
+    secretLockForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const entered = (secretKeyInput?.value || '').trim().toLowerCase();
+      if (
+        entered === 'surprise' ||
+        entered === 'aashiqua' ||
+        entered.includes('surprise') ||
+        entered.includes('aashiqua')
+      ) {
+        unlockWebsite(true);
+      } else {
+        if (lockErrorMsg) {
+          lockErrorMsg.textContent = 'Enter "surprise" or "aashiqua" to unlock ❤️';
+        }
+      }
+    });
+  }
+
+  // Run initial secret link check
+  checkSecretAccess();
+
   // ==========================================================================
   // 10 ROTATING HEARTFELT DIWALI QUOTES FOR AASHIQUA
   // Rotates to the next quote on every site visit, reload, or manual switch!
