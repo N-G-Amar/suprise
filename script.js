@@ -260,16 +260,18 @@ Build the complete working website, not just a design mockup. Implement all butt
 
     const urlParams = new URLSearchParams(window.location.search);
     const hash = window.location.hash.toLowerCase();
-    const keyParam = (urlParams.get('key') || urlParams.get('surprise') || urlParams.get('to') || '').toLowerCase();
-    const hasSearchKeyword = window.location.search.toLowerCase().includes('surprise') || window.location.search.toLowerCase().includes('aashiqua');
+    const keyParam = (urlParams.get('key') || urlParams.get('surprise') || urlParams.get('suprise') || urlParams.get('to') || '').toLowerCase();
+    const hasSearchKeyword = window.location.search.toLowerCase().includes('surprise') || window.location.search.toLowerCase().includes('suprise') || window.location.search.toLowerCase().includes('aashiqua');
     const isSessionUnlocked = sessionStorage.getItem('diwali_surprise_unlocked') === 'true';
 
-    // Auto-unlock if link has ?key=surprise, ?surprise, #surprise, etc. or session is unlocked
+    // Auto-unlock if link has ?key=surprise, ?surprise, ?suprise, #surprise, etc. or session is unlocked
     if (
       keyParam === 'surprise' ||
+      keyParam === 'suprise' ||
       keyParam === 'aashiqua' ||
       hasSearchKeyword ||
       hash.includes('surprise') ||
+      hash.includes('suprise') ||
       hash.includes('aashiqua') ||
       isSessionUnlocked
     ) {
@@ -293,8 +295,10 @@ Build the complete working website, not just a design mockup. Implement all butt
       const entered = (secretKeyInput?.value || '').trim().toLowerCase();
       if (
         entered === 'surprise' ||
+        entered === 'suprise' ||
         entered === 'aashiqua' ||
         entered.includes('surprise') ||
+        entered.includes('suprise') ||
         entered.includes('aashiqua')
       ) {
         unlockWebsite(true);
